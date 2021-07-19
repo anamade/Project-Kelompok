@@ -27,17 +27,6 @@
 	</background>
 	<title>
 		<band height="129" splitType="Stretch">
-			<image>
-				<reportElement uuid="4477dbc0-3120-4c1b-a931-a337d7a220f9" x="0" y="-14" width="555" height="143"/>
-				<box>
-					<pen lineWidth="2.0" lineColor="#0099CC"/>
-					<topPen lineWidth="2.0" lineColor="#0099CC"/>
-					<leftPen lineWidth="2.0" lineColor="#0099CC"/>
-					<bottomPen lineWidth="2.0" lineColor="#0099CC"/>
-					<rightPen lineWidth="2.0" lineColor="#0099CC"/>
-				</box>
-				<imageExpression><![CDATA["D:\\New folder (4)\\Documents\\header.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement uuid="96c19394-3c9d-4217-9ac6-2a65e2fc420c" x="197" y="88" width="236" height="40"/>
 				<textElement>
@@ -50,6 +39,10 @@
 				<textElement/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement uuid="61219241-d820-490b-bf41-8c4cb5b42811" x="0" y="-15" width="555" height="143"/>
+				<imageExpression><![CDATA["D:\\New folder (4)\\Documents\\NetBeansProjects\\Projek_Kelompok 4\\src\\gambar\\header.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

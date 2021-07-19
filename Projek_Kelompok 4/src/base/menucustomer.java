@@ -26,6 +26,7 @@ public class menucustomer extends javax.swing.JFrame {
     public menucustomer() {
         initComponents();
         tampil_combo();
+        tampil_combo2();
         tanggal();
     }
     
@@ -35,7 +36,11 @@ alamatc.setText("");
 teleponc.setText("");
 idpaket.setSelectedItem("-Pilih-");
 paket.setText("");
+idbarang.setSelectedItem("-Pilih-");
+nik.setText("");
+nbarang.setText("");
 kecepatan.setText("");
+jenis.setText("");
 }
     
     public void tanggal(){
@@ -49,14 +54,35 @@ kecepatan.setText("");
         try {
         Connection c = Koneksi.getKoneksi();
         Statement s = c.createStatement();
-        String sql = "select id_paket from paket order by id_paket asc";      // disini saya menampilkan NIM, anda dapat menampilkan
+        String sql = "select idpaket from paket order by idpaket asc";     
+        ResultSet r = s.executeQuery(sql);                                
+        
+        while(r.next()){
+            Object[] ob = new Object[3];
+            ob[0] = r.getString(1);
+            
+            idpaket.addItem((String) ob[0]);                                     
+        }
+        r.close(); s.close();
+         
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void tampil_combo2()
+    {
+        try {
+        Connection c = Koneksi.getKoneksi();
+        Statement s = c.createStatement();
+        String sql = "select idbarang from stokbarang order by idbarang asc";      // disini saya menampilkan NIM, anda dapat menampilkan
         ResultSet r = s.executeQuery(sql);                                // yang anda ingin kan
         
         while(r.next()){
             Object[] ob = new Object[3];
             ob[0] = r.getString(1);
             
-            idpaket.addItem((String) ob[0]);                                      // fungsi ini bertugas menampung isi dari database
+            idbarang.addItem((String) ob[0]);                                      // fungsi ini bertugas menampung isi dari database
         }
         r.close(); s.close();
          
@@ -70,7 +96,7 @@ kecepatan.setText("");
         try {
         Connection c = Koneksi.getKoneksi();
         Statement s = c.createStatement();
-        String sql = "select nama_paket, kecepatan from paket where id_paket='"+idpaket.getSelectedItem()+"'";  
+        String sql = "select nama_paket, kecepatan from paket where idpaket='"+idpaket.getSelectedItem()+"'";  
         ResultSet r = s.executeQuery(sql);
         
         while(r.next()){
@@ -87,26 +113,57 @@ kecepatan.setText("");
             System.out.println(e.getMessage());
         }              
     }
+     
+      public void tampil2()
+    {
+        try {
+        Connection c = Koneksi.getKoneksi();
+        Statement s = c.createStatement();
+        String sql = "select namabarang, jenis from stokbarang where idbarang='"+idbarang.getSelectedItem()+"'";  
+        ResultSet r = s.executeQuery(sql);
+        
+        while(r.next()){
+            Object[] ob = new Object[3];
+            ob[0]=  r.getString(1);
+            ob[1]= r.getString(2);
+            
+            nbarang.setText((String) ob[0]);
+            jenis.setText((String) ob[1]);
+        }
+        r.close(); s.close();
+         
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }              
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         Kembalia = new javax.swing.JButton();
         tanggalan = new javax.swing.JTextField();
+        nik = new javax.swing.JTextField();
         namac = new javax.swing.JTextField();
         alamatc = new javax.swing.JTextField();
         teleponc = new javax.swing.JTextField();
+        jenis = new javax.swing.JTextField();
+        nbarang = new javax.swing.JTextField();
         paket = new javax.swing.JTextField();
         kecepatan = new javax.swing.JTextField();
+        idbarang = new javax.swing.JComboBox<>();
         idpaket = new javax.swing.JComboBox<>();
         order = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -130,11 +187,46 @@ kecepatan.setText("");
         tanggalan.setForeground(new java.awt.Color(0, 153, 204));
         tanggalan.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(tanggalan, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 80, -1));
+
+        nik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nikActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nik, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 200, 20));
         getContentPane().add(namac, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 200, 20));
         getContentPane().add(alamatc, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 200, -1));
         getContentPane().add(teleponc, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 200, 20));
+
+        jenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jenisActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jenis, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 200, 20));
+
+        nbarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nbarangActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nbarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 200, 20));
+
+        paket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paketActionPerformed(evt);
+            }
+        });
         getContentPane().add(paket, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 200, 20));
         getContentPane().add(kecepatan, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 200, 20));
+
+        idbarang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Pilih-" }));
+        idbarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idbarangActionPerformed(evt);
+            }
+        });
+        getContentPane().add(idbarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 90, -1));
 
         idpaket.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Pilih-" }));
         idpaket.addActionListener(new java.awt.event.ActionListener() {
@@ -154,38 +246,61 @@ kecepatan.setText("");
                 orderActionPerformed(evt);
             }
         });
-        getContentPane().add(order, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 130, 30));
+        getContentPane().add(order, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 140, 30));
 
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel5.setText("Alamat");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel6.setText("Telepon");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel9.setText("Pilih Barang");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel7.setText("Pilih Paket");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel12.setText("Jenis Barang");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel13.setText("Nama Barang");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel11.setText("Kecepatan");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 153, 204));
         jLabel8.setText("Nama Paket");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel9.setText("Kecepatan");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel7.setText("Pilih Paket");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel6.setText("Telepon");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel5.setText("Alamat");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 153, 204));
         jLabel4.setText("Nama");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, -1, -1));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 80, 120));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel10.setText("NIK");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 90, 220));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/unnamed (2).jpg"))); // NOI18N
@@ -206,30 +321,77 @@ kecepatan.setText("");
     }//GEN-LAST:event_idpaketActionPerformed
 
     private void orderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderActionPerformed
-String sql ="INSERT into tpesanan values (?,?,?,?,?,?,?)";
-        try{
-        PreparedStatement stat = (PreparedStatement) conn.prepareStatement(sql);
-        stat.setString(1, tanggalan.getText());    
-        stat.setString(2, namac.getText());    
-        stat.setString(3, alamatc.getText());    
-        stat.setString(4, teleponc.getText());    
-        stat.setString(5, (String) idpaket.getSelectedItem());    
-        stat.setString(6, paket.getText());    
-        stat.setString(7, kecepatan.getText());
-        
-        stat.executeUpdate();
-        JOptionPane.showMessageDialog(null, "Order Sukses");
-        bersih();
+        int idpesanan;
+        int[] nilai = new int[2];
+        String sql ="INSERT into pesanan values (?,?,?,?,?)";
+        String sqlc ="INSERT into customer (NIK, nama, alamat, telepon) values (?,?,?,?)";
+        try {
+        Connection c = Koneksi.getKoneksi();
+        Statement s = c.createStatement();
+        String sqlb ="SELECT * FROM pesanan WHERE idpesanan = (SELECT MAX(idpesanan) FROM pesanan)";
+        ResultSet r = s.executeQuery(sqlb);
+         while (r.next()) {
+            idpesanan = r.getInt("idpesanan") + 1;
+            nilai[0] = idpesanan;
+          }
+                try{
+                PreparedStatement stat = (PreparedStatement) conn.prepareStatement(sqlc);
+                stat.setString(1, nik.getText());
+                stat.setString(2, namac.getText()); 
+                stat.setString(3, alamatc.getText());
+                stat.setString(4, teleponc.getText());
+
+                stat.executeUpdate();
+
+                PreparedStatement stat2 = (PreparedStatement) conn.prepareStatement(sql);
+                stat2.setInt(1, nilai[0]);
+                stat2.setString(2, tanggalan.getText());
+                stat2.setString(3, nik.getText());    
+                stat2.setString(4, paket.getText());   
+                stat2.setString(5, nbarang.getText());
+
+                stat2.executeUpdate();
+
+                String sqlsb ="UPDATE stokbarang SET jumlah= jumlah-1 WHERE namabarang='"+ nbarang.getText()+"'";
+                int sb = s.executeUpdate(sqlsb);
+                bersih();
+                JOptionPane.showMessageDialog(null, "Order Sukses");
+
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Order Gagal");
+                    bersih();
+                    }
+            
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Order Gagal");
-            bersih();
-        }     // TODO add your handling code here:
+                JOptionPane.showMessageDialog(null, "Eror");
+                bersih();
+            }
     }//GEN-LAST:event_orderActionPerformed
 
     private void KembaliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KembaliaActionPerformed
          new menuawal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_KembaliaActionPerformed
+
+    private void paketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paketActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_paketActionPerformed
+
+    private void nikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nikActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nikActionPerformed
+
+    private void idbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idbarangActionPerformed
+    tampil2();        // TODO add your handling code here:
+    }//GEN-LAST:event_idbarangActionPerformed
+
+    private void nbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nbarangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nbarangActionPerformed
+
+    private void jenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jenisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,8 +431,13 @@ String sql ="INSERT into tpesanan values (?,?,?,?,?,?,?)";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Kembalia;
     private javax.swing.JTextField alamatc;
+    private javax.swing.JComboBox<String> idbarang;
     private javax.swing.JComboBox<String> idpaket;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -280,8 +447,11 @@ String sql ="INSERT into tpesanan values (?,?,?,?,?,?,?)";
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jenis;
     private javax.swing.JTextField kecepatan;
     private javax.swing.JTextField namac;
+    private javax.swing.JTextField nbarang;
+    private javax.swing.JTextField nik;
     private javax.swing.JButton order;
     private javax.swing.JTextField paket;
     private javax.swing.JTextField tanggalan;

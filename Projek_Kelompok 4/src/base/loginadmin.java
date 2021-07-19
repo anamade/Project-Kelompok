@@ -49,7 +49,7 @@ passa.setText("");
         });
         getContentPane().add(emaila, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 210, 40));
 
-        passa.setText("password");
+        passa.setText("jPasswordField1");
         getContentPane().add(passa, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 210, 40));
 
         Kembalia.setBackground(new java.awt.Color(255, 51, 51));
@@ -66,16 +66,15 @@ passa.setText("");
 
         Logina.setBackground(new java.awt.Color(0, 153, 255));
         Logina.setFont(new java.awt.Font("Century Gothic", 1, 21)); // NOI18N
-        Logina.setForeground(new java.awt.Color(102, 102, 102));
+        Logina.setForeground(new java.awt.Color(255, 255, 255));
         Logina.setText("Login");
-        Logina.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Logina.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Logina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginaActionPerformed(evt);
             }
         });
-        getContentPane().add(Logina, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 210, 40));
+        getContentPane().add(Logina, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 210, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/loginadmin.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 390));

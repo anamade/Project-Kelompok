@@ -27,6 +27,7 @@ public class menuawal extends javax.swing.JFrame {
 
         ordercustomer = new javax.swing.JButton();
         tentanglayanan = new javax.swing.JButton();
+        tentanglayanan1 = new javax.swing.JButton();
         kontaklayanan = new javax.swing.JButton();
         Kembalia = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -41,7 +42,7 @@ public class menuawal extends javax.swing.JFrame {
                 ordercustomerActionPerformed(evt);
             }
         });
-        getContentPane().add(ordercustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 110, 80));
+        getContentPane().add(ordercustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 110, 80));
 
         tentanglayanan.setBackground(new java.awt.Color(0, 153, 255));
         tentanglayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/PELANGGAN.jpg"))); // NOI18N
@@ -50,7 +51,16 @@ public class menuawal extends javax.swing.JFrame {
                 tentanglayananActionPerformed(evt);
             }
         });
-        getContentPane().add(tentanglayanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 120, 80));
+        getContentPane().add(tentanglayanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 110, 80));
+
+        tentanglayanan1.setBackground(new java.awt.Color(0, 153, 255));
+        tentanglayanan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/PELANGGAN.jpg"))); // NOI18N
+        tentanglayanan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tentanglayanan1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tentanglayanan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 110, 80));
 
         kontaklayanan.setBackground(new java.awt.Color(0, 153, 255));
         kontaklayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/stok barangjpg.jpg"))); // NOI18N
@@ -59,7 +69,7 @@ public class menuawal extends javax.swing.JFrame {
                 kontaklayananActionPerformed(evt);
             }
         });
-        getContentPane().add(kontaklayanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 110, 80));
+        getContentPane().add(kontaklayanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 110, 80));
 
         Kembalia.setBackground(new java.awt.Color(255, 51, 51));
         Kembalia.setFont(new java.awt.Font("Century Gothic", 1, 10)); // NOI18N
@@ -98,6 +108,10 @@ public class menuawal extends javax.swing.JFrame {
         new loginadmin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_KembaliaActionPerformed
+
+    private void tentanglayanan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tentanglayanan1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tentanglayanan1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,5 +155,6 @@ public class menuawal extends javax.swing.JFrame {
     private javax.swing.JButton kontaklayanan;
     private javax.swing.JButton ordercustomer;
     private javax.swing.JButton tentanglayanan;
+    private javax.swing.JButton tentanglayanan1;
     // End of variables declaration//GEN-END:variables
 }

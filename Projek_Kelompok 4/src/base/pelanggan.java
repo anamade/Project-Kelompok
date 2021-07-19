@@ -29,19 +29,15 @@ public class pelanggan extends javax.swing.JFrame {
   public Connection conn = Koneksi.getKoneksi();
     public pelanggan() {
         initComponents();
-    String [] judul = {"Tanggal", "Nama", "Alamat", "Telepon", "Paket", "Nama Paket", "Kecepatan"};
+    String [] judul = {"NIK", "Nama", "Alamat", "Telepon"};
        model =new DefaultTableModel(judul, 0);
                tpelanggan.setModel(model);
              tampilkan();
     }
     public void bersih() {
-tglp.setText("");
-np.setText("");
+nik.setText("");
 ap.setText("");
 np.setText("");
-npp.setText("");
-kp.setText("");
-pp.setText("");
 tp.setText("");
 }
 
@@ -59,13 +55,10 @@ tp.setText("");
         hapus = new javax.swing.JButton();
         cetak = new javax.swing.JButton();
         Kembalia = new javax.swing.JButton();
-        tglp = new javax.swing.JTextField();
+        nik = new javax.swing.JTextField();
         np = new javax.swing.JTextField();
         ap = new javax.swing.JTextField();
         tp = new javax.swing.JTextField();
-        pp = new javax.swing.JTextField();
-        npp = new javax.swing.JTextField();
-        kp = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -92,7 +85,7 @@ tp.setText("");
         });
         jScrollPane1.setViewportView(tpelanggan);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 510, 300));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 560, 300));
 
         hapus.setBackground(new java.awt.Color(0, 153, 255));
         hapus.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -104,7 +97,7 @@ tp.setText("");
                 hapusActionPerformed(evt);
             }
         });
-        getContentPane().add(hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 90, 30));
+        getContentPane().add(hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, 90, 30));
 
         cetak.setBackground(new java.awt.Color(0, 153, 255));
         cetak.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -116,7 +109,7 @@ tp.setText("");
                 cetakActionPerformed(evt);
             }
         });
-        getContentPane().add(cetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 440, 90, 30));
+        getContentPane().add(cetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 90, 30));
 
         Kembalia.setBackground(new java.awt.Color(255, 51, 51));
         Kembalia.setFont(new java.awt.Font("Century Gothic", 1, 10)); // NOI18N
@@ -129,7 +122,7 @@ tp.setText("");
             }
         });
         getContentPane().add(Kembalia, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, 90, 30));
-        getContentPane().add(tglp, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 150, 20));
+        getContentPane().add(nik, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 150, 20));
 
         np.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,15 +132,6 @@ tp.setText("");
         getContentPane().add(np, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 150, -1));
         getContentPane().add(ap, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 150, 20));
         getContentPane().add(tp, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 150, -1));
-        getContentPane().add(pp, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 150, 20));
-
-        npp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nppActionPerformed(evt);
-            }
-        });
-        getContentPane().add(npp, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, 150, -1));
-        getContentPane().add(kp, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, 150, 20));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,15 +150,15 @@ tp.setText("");
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 250, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/pelanggan.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 370));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/unnamed (2).jpg"))); // NOI18N
         jLabel2.setText("j");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 200, 100));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 200, 90));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/unnamed (2).jpg"))); // NOI18N
         jLabel3.setText("j");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 420, 100));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 420, 90));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -183,7 +167,7 @@ tp.setText("");
 
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/project","root","");
-            cn.createStatement().executeUpdate("delete from tpesanan where nama='"+np.getText()+"'");
+            cn.createStatement().executeUpdate("delete from pesanan where NIK='"+nik.getText()+"'");
             JOptionPane.showMessageDialog(null, "Hapus Pelanggan Sukses");
             tampilkan();
             bersih();
@@ -202,13 +186,10 @@ tp.setText("");
     private void tpelangganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tpelangganMouseClicked
 int i = tpelanggan.getSelectedRow();
 if (i>-1){
-        tglp.setText(model.getValueAt(i, 0).toString());
+        nik.setText(model.getValueAt(i, 0).toString());
         np.setText(model.getValueAt(i, 1).toString());
         ap.setText(model.getValueAt(i, 2).toString());
         tp.setText(model.getValueAt(i, 3).toString());
-        pp.setText(model.getValueAt(i, 4).toString());
-        npp.setText(model.getValueAt(i, 5).toString());
-        kp.setText(model.getValueAt(i, 6).toString());
 }// TODO add your handling code here:
     }//GEN-LAST:event_tpelangganMouseClicked
 
@@ -216,13 +197,9 @@ if (i>-1){
         // TODO add your handling code here:
     }//GEN-LAST:event_npActionPerformed
 
-    private void nppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nppActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nppActionPerformed
-
     private void cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakActionPerformed
         try {
-            File reportpelanggan = new File("src/report/reportpelanggan.jasper");
+            File reportpelanggan = new File("src/report/reportcustomer.jasper");
             JasperPrint jp = JasperFillManager.fillReport(reportpelanggan.getPath(), null, Koneksi.getKoneksi());
             JasperViewer.viewReport(jp, false);
         } catch (JRException e) {
@@ -275,11 +252,8 @@ if (i>-1){
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField kp;
+    private javax.swing.JTextField nik;
     private javax.swing.JTextField np;
-    private javax.swing.JTextField npp;
-    private javax.swing.JTextField pp;
-    private javax.swing.JTextField tglp;
     private javax.swing.JTextField tp;
     private javax.swing.JTable tpelanggan;
     // End of variables declaration//GEN-END:variables
@@ -290,9 +264,9 @@ private void tampilkan() {
     }
     try {
         Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/project","root","");
-         ResultSet rs = cn.createStatement().executeQuery("SELECT * FROM tpesanan");
+         ResultSet rs = cn.createStatement().executeQuery("SELECT * FROM customer");
          while (rs.next()){
-             String data []= {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)};
+             String data []= {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)};
              model.addRow(data);
          }
     } catch (SQLException ex) {
